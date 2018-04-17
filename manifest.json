@@ -4,7 +4,7 @@
 	"name": "Share Doc to Classroom",
 	"description": "An extension to help teachers share Docs to Google Classroom",
 	
-	"version": "0.2",
+	"version": "0.3.9",
 	
 	"icons": {
 		"8": "icons/icon8.png",
@@ -18,6 +18,12 @@
 	"browser_action": {
     	"default_icon": "icons/icon32.png"
   	},
+  	
+  	"background": {
+		"scripts": [
+			"background.js"
+		]
+	},
 	
 	"content_scripts": [
 		{
