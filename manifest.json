@@ -1,0 +1,29 @@
+{
+	"manifest_version": 2,
+	
+	"name": "Share Doc to Classroom as Read-Only",
+	"description": "An extension to help teachers share Docs to Google Classroom with read-only permissions",
+	
+	"version": "0.1",
+	
+	"icons": {
+		"16": "icons/icon16.png",
+		"28": "icons/icon28.png",
+		"32": "icons/icon32.png",
+		"64": "icons/icon64.png"
+	},
+	
+	"content_scripts": [
+		{
+			"matches": ["https://docs.google.com/sharing/*"],
+			"js": ["inject.js"],
+			"all_frames": true,
+			"run_at": "document_end"
+		}
+	],
+	
+	"permissions": [
+		"tabs",
+		"activeTab"
+	]
+}
