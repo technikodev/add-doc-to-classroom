@@ -1,17 +1,5 @@
 //just the share button, assuming user has already clicked share then copy link
 
-//window.$ = document.querySelectorAll.bind(document);
-
-
-
-//container.innerHTML = '<script src="https://apis.google.com/js/platform.js" async defer></script><g:sharetoclassroom url="http://url-to-share" size="32"></g:sharetoclassroom>';
-//container.innerHTML = '<script src="https://apis.google.com/js/platform.js" async defer></script><g:sharetoclassroom url="http://url-to-share" size="32"></g:sharetoclassroom></div><div class="simple-sharing-vertical-spacer">';
-
-//var container = document.createElement('div');
-//container.innerHTML = '<div class="g-sharetoclassroom" data-size="32" data-url="https://google.com" ></div><script src="https://apis.google.com/js/platform.js"></script><div class="simple-sharing-vertical-spacer">';
-
-//<div class="simple-sharing-vertical-spacer">
-
 function addMonitor(){
 	var monitor = setInterval(function() {
   		check();
@@ -20,14 +8,21 @@ function addMonitor(){
 
 function check() {
 	//console.log('hi');
-	if (document.getElementsByClassName('simple-sharing-vertical-spacer')[0] && document.getElementsByClassName('simple-sharing-people-heading')[0] ) {
+	if (document.getElementsByClassName('simple-sharing-vertical-spacer')[0] || document.getElementsByClassName('simple-sharing-people-heading')[0] ) {
 		var url = (window.location != window.parent.location)
 				? document.referrer
 				: document.location.href;
-		if (url.match('https:\/\/docs.google.com/document')){
+		
+		if (document.getElementsByClassName('share-doc-to-classroom-button-ext')[0]) {
+			//addsharebutton();
+			//console.log('it\'s there');
+		} else if (url.match('https:\/\/docs.google.com/document')){
 			addsharebutton();
 			clearInterval(monitor);
 		}
+	} else {
+		console.log(document.getElementsByClassName('simple-sharing-vertical-spacer')[0]);
+		console.log(document.getElementsByClassName('simple-sharing-people-heading')[0]);
 	}
 }
 
@@ -35,14 +30,20 @@ window.onload = addMonitor;
 
 
 function addsharebutton() {
-	var spacer = document.getElementsByClassName('simple-sharing-vertical-spacer')[0];
-	spacer.parentNode.removeChild(spacer);
+	
+	if (document.getElementsByClassName('simple-sharing-vertical-spacer')[0]) {
+		var spacer = document.getElementsByClassName('simple-sharing-vertical-spacer')[0];
+		spacer.parentNode.removeChild(spacer);
+	}
+	
+	document.getElementsByClassName('data-dialog')[0].style = '';
 
 	var bar = document.getElementsByClassName('simple-sharing-button-bar')[0];
 	bar.style = 'margin-top: 0px';
 
 	var insertinto = document.getElementsByClassName('simple-sharing-people-heading')[0];
 	var container = document.createElement('div');
+	container.classList.add('share-doc-to-classroom-button-ext');
 
 	var scripty = document.createElement('script');
 	scripty.src = 'https://apis.google.com/js/platform.js';
@@ -83,5 +84,3 @@ function addsharebutton() {
 
 
 //insertinto.appendChild(container);
-
-//https://docs.google.com/document/d/1viSok-RZtlQNVU0BYGZ13nmDp4s6QgkZTgtR6WgD_2Q/edit
