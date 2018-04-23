@@ -11,6 +11,10 @@ css injected into the doc page
 	/*height: 360px !important;*/
 	height: 262px !important;
 }
+.modal-dialog-content[style*="215px"] {
+	/*height: 360px !important;*/
+	height: 262px !important;
+}
 
 /* link */
 .modal-dialog.share-client-dialog[style*="239.5px"] {
