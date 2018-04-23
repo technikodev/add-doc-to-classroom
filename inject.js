@@ -26,7 +26,7 @@ function check() {
 	}
 }
 
-window.onload = addMonitor;
+addMonitor();
 
 
 function addsharebutton() {
