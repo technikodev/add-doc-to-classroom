@@ -2,19 +2,92 @@
 <html>
 	<head>
 		<script src="chrome-promise.js"></script>
+		<style>
+			.demo {
+				display: flex;
+				/*align-content: flex-start;*/
+				text-align: center;
+				justify-content: center;
+				align-content: center;
+				align-items: center;
+				/*<div style="display:flex;justify-content:center;align-items:center;">Text Content</div>*/
+			}
+			.demo > img, .demo > div {
+				margin: auto;
+			}
+		</style>
 	</head>
 	<body>
 		<form>
 			<fieldset>
 				<legend>Type of button</legend>
 				<section>
-					<input type="radio" name="group" value="icon" id="icon">
-					<label for="one">Icon</label>
+					<input type="radio" name="type" value="icon" id="icon">
+					<label for="icon">Icon</label>
 				
-					<input type="radio" name="group" value="button" id="button">
-					<label for="two">Button</label>
-				
-					<button type="submit">Submit</button>
+					<input type="radio" name="type" value="button" id="button">
+					<label for="button">Button</label>
+					
+					<br>
+					<br>
+					<section id="iconsection">
+						<label for="iconcolour" id="iconlabel">Choose Icon Colour</label>
+						<select id="iconcolour" name="icolour">
+   							<option value="green">Green</option>
+   							<option value="dark">Dark</option>
+   							<option value="light">Light</option>
+						</select>
+						<br>
+						<fieldset class="demo">
+							<legend>Demo</legend>
+							<img class="child" id="iconimage" width="48" height="48">
+						</fieldset>
+					</section>
+					
+					<section id="buttonsection">
+						<label for="buttoncolour" id="buttonlabel">Choose Button Colour</label>
+						<input type="color" id="buttoncolour" name="bcolour">
+						<p><em><a id="buttonreset" style="color: black; cursor: pointer; text-decoration: underline;">Default grey</a></em></p>
+						<style>
+							#share-doc-to-classroom-ext-label {
+								box-shadow: none;
+								/*background-color: rgb(227, 226, 226);*/
+								cursor: pointer;
+								border-color: transparent;
+								border-radius: 2px;
+								border-width: 1px;
+								border-style: inset;
+								color: rgb(0,0,0);
+								font-size: 13px;
+								height: 30px;
+								padding: 0 14px;
+								/*margin-right: 8px;*/
+	
+								display: inline-flex;
+								align-items: center;
+								justify-content: center;
+	
+								text-align: center;
+							}
+
+							#share-doc-to-classroom-ext-label:hover {
+								box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 3px 1px -2px rgba(0,0,0,0.12), 0px 1px 5px 0px rgba(0,0,0,0.2);
+	
+							}
+						</style>
+						<!--<br>-->
+						
+						<fieldset class="demo">
+							<legend>Demo</legend>
+							<div><label id="share-doc-to-classroom-ext-label" class="child">Share Doc to Classroom</label></div>
+						</fieldset>
+						
+					</section>
+					
+					<br>
+					<br>
+					
+					<button type="submit">Save</button>
 					<p id="status"></p>
 				</section>
 			</fieldset>
