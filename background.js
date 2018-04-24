@@ -13,7 +13,7 @@ function clear() {
 		console.log('Storage cleared');
 	});
 }
-//clear();
+clear();
 
 function restore() {
 	chromep.storage.local.get('initial').then(function(item) {
@@ -21,7 +21,7 @@ function restore() {
 		if (item.initial == false) {
 			console.log('initial was false');
 		} else {			
-			chromep.storage.local.set({initial: false, type: 'icon'});
+			chromep.storage.local.set({initial: false, type: 'icon', icolour: 'green', bcolour: '#E3E2E2'});
 			
 		}
 	}).catch(function(reason) {
@@ -33,11 +33,12 @@ restore();
 chrome.runtime.onMessage.addListener(
 	function(request, sender, sendResponse) {
 		//sendResponse({type: 'hello'});
-    	chromep.storage.local.get('type').then(function (item) {
-    		console.log(item.type);
+    	chromep.storage.local.get(['type', 'icolour', 'bcolour']).then(function (item) {
+    		//console.log(item.type);
     		var typeSend = item.type;
-    		typeSend = typeSend.toString();
-    		sendResponse({type: typeSend});
+    		var icolourSend = item.icolour;
+    		var bcolourSend = item.bcolour;
+    		sendResponse({type: typeSend, icolour: icolourSend, bcolour: bcolourSend});
     	});
       	return true;
   	});
