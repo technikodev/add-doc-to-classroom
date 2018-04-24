@@ -8,7 +8,6 @@ function check() {
 	//console.log('hi');
 	if (document.getElementsByClassName('simple-sharing-vertical-spacer')[0] || document.getElementsByClassName('simple-sharing-people-heading')[0] ) {
 		var url = (window.location != window.parent.location) ? document.referrer : document.location.href;
-		
 		if (document.getElementsByClassName('share-doc-to-classroom-button-ext')[0]) {
 			//console.log('it\'s there');
 		} else if (url.match('https:\/\/docs.google.com/document')){
@@ -47,8 +46,8 @@ function addsharebutton() {
 	//send message
 	//receive message
 	chrome.runtime.sendMessage({greeting: "getType"}, function(response) {
-  		console.log(response);
-  		console.log(response.type);
+  		//console.log(response);
+  		//console.log(response.type);
 		var type = response.type;
 		if (type == 'icon') {
 			var scripty = document.createElement('script');
@@ -62,7 +61,18 @@ function addsharebutton() {
 			divy.dataset.size = '48';
 
 			var url = (window.location != window.parent.location) ? document.referrer : document.location.href;
-	
+			
+			switch (response.icolour) {
+				case 'light':
+					divy.dataset.theme = 'light';
+					break;
+				case 'dark':
+					divy.dataset.theme = 'dark';
+					break;
+				default:
+					divy.dataset.theme = 'classic';
+			}
+			
 			divy.dataset.url = url;
 			divtd.appendChild(divy);
 			
@@ -76,7 +86,7 @@ function addsharebutton() {
 		} else {
 			var texttd = document.createElement('td');
 			var stylez = document.createElement('style');
-			stylez.innerHTML = '.share-doc-to-classroom-ext-label {\n\tbox-shadow: none;\n\tbackground-color: rgb(227, 226, 226);\n\tcursor: pointer;\n\tborder-color: transparent;\n\tborder-radius: 2px;\n\tborder-width: 1px;\n\tborder-style: inset;\n\tcolor: rgb(0,0,0);\n\tfont-size: 13px;\n\theight: 30px;\n\tpadding: 0 14px;\n\tmargin-right: 8px;\n\t\n\tdisplay: inline-flex;\n\talign-items: center;\n\tjustify-content: center;\n\t\n\ttext-align: center;\n}\n\n.share-doc-to-classroom-ext-label:hover {\n\tbox-shadow: 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 3px 1px -2px rgba(0,0,0,0.12), 0px 1px 5px 0px rgba(0,0,0,0.2);\n\t\n}';
+			stylez.innerHTML = '.share-doc-to-classroom-ext-label {\n\tbox-shadow: none;\n\tbackground-color: ' + response.bcolour +';\n\tcursor: pointer;\n\tborder-color: transparent;\n\tborder-radius: 2px;\n\tborder-width: 1px;\n\tborder-style: inset;\n\tcolor: rgb(0,0,0);\n\tfont-size: 13px;\n\theight: 30px;\n\tpadding: 0 14px;\n\tmargin-right: 8px;\n\t\n\tdisplay: inline-flex;\n\talign-items: center;\n\tjustify-content: center;\n\t\n\ttext-align: center;\n}\n\n.share-doc-to-classroom-ext-label:hover {\n\tbox-shadow: 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 3px 1px -2px rgba(0,0,0,0.12), 0px 1px 5px 0px rgba(0,0,0,0.2);\n\t\n}';
 			texttd.appendChild(stylez);
 	
 			var text = document.createElement('label');
