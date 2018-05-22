@@ -77,12 +77,12 @@ function changeImage (style) {
 	var img = document.querySelector('#iconimage');
 	switch (style) {
 		case'light':
-			img.src = 'https://www.gstatic.com/classroom/logo_light_square_36.svg';
+			img.src = chrome.runtime.getURL('images/light.svg');
 			break;
 		case 'dark':
-			img.src = 'https://www.gstatic.com/classroom/logo_dark_square_48.svg';
+			img.src = chrome.runtime.getURL('images/dark.svg');
 			break;
 		default:
-			img.src = 'https://www.gstatic.com/classroom/logo_square_48.svg';
+			img.src = chrome.runtime.getURL('images/default.svg');;
 	}
 }
