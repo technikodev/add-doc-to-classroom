@@ -4,7 +4,7 @@
 	"name": "Share Doc to Classroom",
 	"description": "An extension to help teachers share Docs to Google Classroom",
 	
-	"version": "0.6",
+	"version": "0.7",
 	
 	"icons": {
 		"8": "icons/icon8.png",
@@ -16,11 +16,13 @@
 	},
 	
 	"browser_action": {
+    	"default_title": "Open the options page for Share Doc to Classroom",
     	"default_icon": "icons/icon32.png"
   	},
   	
   	"background": {
 		"scripts": [
+			"hot-reload.js",
 			"chrome-promise.js",
 			"background.js"
 		]
@@ -57,5 +59,9 @@
 	
 	"permissions": [
 		"storage"
-	]
+	],
+	
+	"web_accessible_resources": [
+    		"images/*"
+  	]
 }
