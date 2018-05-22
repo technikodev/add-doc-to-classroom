@@ -13,7 +13,7 @@ function clear() {
 		console.log('Storage cleared');
 	});
 }
-clear();
+//clear();
 
 function restore() {
 	chromep.storage.local.get('initial').then(function(item) {
@@ -28,7 +28,18 @@ function restore() {
 		console.log(reason);
 	});
 }
-restore();
+//restore();
+
+chrome.runtime.onInstalled.addListener(function(details) {
+	restore();
+	//if (details.reason == 'install') {
+		//chrome.tabs.create(firstinstall);
+	//} else if (details.reason == 'update') {
+		//var b = chrome.runtime.getManifest()['version'];
+		//console.log('Updated from ' + details.previousVersion + ' to ' + b);
+		//chromep.storage.local.set({oldv: details.previousVersion, newv: b});
+	//}
+});
 
 chrome.runtime.onMessage.addListener(
 	function(request, sender, sendResponse) {
