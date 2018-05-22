@@ -1,3 +1,5 @@
+var ok = false;
+
 function addMonitor(){
 	var monitor = setInterval(function() {
   		check();
@@ -14,10 +16,13 @@ function check() {
 			addsharebutton();
 			clearInterval(monitor);
 		}
-	} else {
-		console.log(document.getElementsByClassName('simple-sharing-vertical-spacer')[0]);
-		console.log(document.getElementsByClassName('simple-sharing-people-heading')[0]);
-	}
+	}// else {
+		/*if (!ok) {
+			console.log(document.getElementsByClassName('simple-sharing-vertical-spacer')[0]);
+			console.log(document.getElementsByClassName('simple-sharing-people-heading')[0]);
+			ok = !ok;
+		}*/
+	//}
 }
 
 addMonitor();
@@ -43,42 +48,51 @@ function addsharebutton() {
 	var tabley = document.createElement('table');
 	var tableyr = document.createElement('tr');
 	
-	//send message
-	//receive message
+	//send & receive messages
 	chrome.runtime.sendMessage({greeting: "getType"}, function(response) {
   		//console.log(response);
   		//console.log(response.type);
 		var type = response.type;
 		if (type == 'icon') {
-			var scripty = document.createElement('script');
-			scripty.src = 'https://apis.google.com/js/platform.js';
-			container.appendChild(scripty);
-	
+			
 			var divtd = document.createElement('td');
-
-			var divy = document.createElement('div');
-			divy.classList.add('g-sharetoclassroom');
-			divy.dataset.size = '48';
-
+			
+			var img = document.createElement('img');
+			img.width = 48;
+			img.height = 48;
+			img.classList.add('share-doc-to-classroom-ext-icon');
+			
 			var url = (window.location != window.parent.location) ? document.referrer : document.location.href;
+			var openurl = 'https://classroom.google.com/share?url=' + encodeURIComponent(url);
 			
 			switch (response.icolour) {
 				case 'light':
-					divy.dataset.theme = 'light';
+					img.src = chrome.runtime.getURL('images/light.svg');
 					break;
 				case 'dark':
-					divy.dataset.theme = 'dark';
+					img.src = chrome.runtime.getURL('images/dark.svg');
 					break;
 				default:
-					divy.dataset.theme = 'classic';
+					img.src = chrome.runtime.getURL('images/default.svg');;
 			}
 			
-			divy.dataset.url = url;
-			divtd.appendChild(divy);
+			img.addEventListener('click', function (e) {
+				openit(openurl);
+			}, false);
+			
+			//img.style = 'cursor:pointer';
+			
+			divtd.appendChild(img);
+			
+			var stylez = document.createElement('style');
+			stylez.innerText = '.share-doc-to-classroom-ext-icon {\n\tcursor: pointer;\n\tuser-drag: none; \n\tuser-select: none;\n\t-moz-user-select: none;\n\t-webkit-user-drag: none;\n\t-webkit-user-select: none;\n\t-ms-user-select: none;\n}\n.share-doc-to-classroom-ext-icon:hover {\n\tfilter: brightness(80%);\n}\n /*.share-doc-to-classroom-ext-icon:active {\n\tfilter: drop-shadow(5px 5px 3px ' + response.bcolour + ');\n}*/\n.share-doc-to-classroom-ext-text {\n\tfont-family: \'Roboto\';\n}';
+			divtd.appendChild(stylez);
+			
 			
 			var texttd = document.createElement('td');;
 			var text = document.createElement('p');
-			text.innerText = 'Share Doc To Classroom';
+			text.classList.add('share-doc-to-classroom-ext-text');
+			text.innerText = 'Share Doc to Classroom';
 			
 			texttd.appendChild(text);
 			tableyr.appendChild(divtd);
@@ -86,7 +100,7 @@ function addsharebutton() {
 		} else {
 			var texttd = document.createElement('td');
 			var stylez = document.createElement('style');
-			stylez.innerHTML = '.share-doc-to-classroom-ext-label {\n\tbox-shadow: none;\n\tbackground-color: ' + response.bcolour +';\n\tcursor: pointer;\n\tborder-color: transparent;\n\tborder-radius: 2px;\n\tborder-width: 1px;\n\tborder-style: inset;\n\tcolor: rgb(0,0,0);\n\tfont-size: 13px;\n\theight: 30px;\n\tpadding: 0 14px;\n\tmargin-right: 8px;\n\t\n\tdisplay: inline-flex;\n\talign-items: center;\n\tjustify-content: center;\n\t\n\ttext-align: center;\n}\n\n.share-doc-to-classroom-ext-label:hover {\n\tbox-shadow: 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 3px 1px -2px rgba(0,0,0,0.12), 0px 1px 5px 0px rgba(0,0,0,0.2);\n\t\n}';
+			stylez.innerText = '.share-doc-to-classroom-ext-label {\n\tbox-shadow: none;\n\tbackground-color: ' + response.bcolour +';\n\tcursor: pointer;\n\tborder-color: transparent;\n\tborder-radius: 2px;\n\tborder-width: 1px;\n\tborder-style: inset;\n\tcolor: rgb(0,0,0);\n\tfont-size: 13px;\n\theight: 30px;\n\tpadding: 0 14px;\n\tmargin-right: 8px;\n\t\n\tdisplay: inline-flex;\n\talign-items: center;\n\tjustify-content: center;\n\t\n\ttext-align: center;\n}\n\n.share-doc-to-classroom-ext-label:hover {\n\tbox-shadow: 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 3px 1px -2px rgba(0,0,0,0.12), 0px 1px 5px 0px rgba(0,0,0,0.2);\n\t\n}';
 			texttd.appendChild(stylez);
 	
 			var text = document.createElement('label');
@@ -95,7 +109,8 @@ function addsharebutton() {
 			var url = (window.location != window.parent.location) ? document.referrer : document.location.href;
 			var openurl = 'https://classroom.google.com/share?url=' + encodeURIComponent(url);
 			text.addEventListener('click', function(e) {
-				window.open(openurl, 'addToClassroomWindow', 'width=500,height=500');
+				//window.open(openurl, 'addToClassroomWindow', 'width=500,height=500');
+				openit(openurl);
 			}, false);
 	
 			//var text = document.createElement('p');
@@ -119,4 +134,8 @@ function addsharebutton() {
 	container.appendChild(tabley);
 
 	insertinto.insertBefore(container, insertinto.firstChild);
+}
+
+function openit(url) {
+	window.open(url, 'addToClassroomWindow', 'width=500,height=500');
 }
