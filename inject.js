@@ -1,34 +1,61 @@
+console.log('Share Doc To Classroom is running');
+
+
 var ok = false;
 
-function addMonitor(){
-	var monitor = setInterval(function() {
-  		check();
-	}, 100);
+function doit() {
+	var url = (window.location != window.parent.location) ? document.referrer : document.location.href;
+	if (url.match('https:\/\/docs.google.com/document')){
+		addsharebutton();
+	}
 }
 
-function check() {
-	//console.log('hi');
-	if (document.getElementsByClassName('simple-sharing-vertical-spacer')[0] || document.getElementsByClassName('simple-sharing-people-heading')[0] ) {
-		var url = (window.location != window.parent.location) ? document.referrer : document.location.href;
-		if (document.getElementsByClassName('share-doc-to-classroom-button-ext')[0]) {
-			//console.log('it\'s there');
-		} else if (url.match('https:\/\/docs.google.com/document')){
-			addsharebutton();
-			clearInterval(monitor);
-		}
-	}// else {
-		/*if (!ok) {
-			console.log(document.getElementsByClassName('simple-sharing-vertical-spacer')[0]);
-			console.log(document.getElementsByClassName('simple-sharing-people-heading')[0]);
-			ok = !ok;
-		}*/
-	//}
+function setup() {
+	if (!ok) {
+		ok = true;
+		var io = new IntersectionObserver(
+		  entries => {
+			//console.log('io', entries);
+			if (entries[0].isIntersecting == true) {
+				//console.log('shown');
+			} else {
+				//console.log('hidden');
+			}
+			doit();
+		  },
+		  {}
+		);
+		// Start observing an element
+		io.observe(document.body);
+	}
 }
 
-addMonitor();
+//https://codepen.io/AmeliaBR/post/basic-javascript-event-throttling
+function actThenThrottleEvents(listener, delay) {
+  var timeout;
+  return function(e) {
+    if (!timeout) { // no timer running
+      listener(e); // run the function
+      timeout = setTimeout( function() { timeout = null }, 
+        delay); // start a timer that turns itself off when it's done
+    }  
+    //else, do nothing (we're in a throttling stage)
+  }
+}
+
+document.arrive('.simple-sharing-people-heading', function() {
+	setup();
+	//actThenThrottleEvents(setup, 250);
+});
+document.arrive('.simple-sharing-vertical-spacer', function() {
+	setup();
+	//actThenThrottleEvents(setup, 250);
+});
+
 
 
 function addsharebutton() {	
+	//console.log(Date.now());
 	if (document.getElementsByClassName('simple-sharing-vertical-spacer')[0]) {
 		var spacer = document.getElementsByClassName('simple-sharing-vertical-spacer')[0];
 		spacer.parentNode.removeChild(spacer);
@@ -48,7 +75,6 @@ function addsharebutton() {
 	var tabley = document.createElement('table');
 	var tableyr = document.createElement('tr');
 	
-	//send & receive messages
 	chrome.runtime.sendMessage({greeting: "getType"}, function(response) {
   		//console.log(response);
   		//console.log(response.type);
@@ -85,7 +111,7 @@ function addsharebutton() {
 			divtd.appendChild(img);
 			
 			var stylez = document.createElement('style');
-			stylez.innerText = '.share-doc-to-classroom-ext-icon {\n\tcursor: pointer;\n\tuser-drag: none; \n\tuser-select: none;\n\t-moz-user-select: none;\n\t-webkit-user-drag: none;\n\t-webkit-user-select: none;\n\t-ms-user-select: none;\n}\n.share-doc-to-classroom-ext-icon:hover {\n\tfilter: brightness(80%);\n}\n /*.share-doc-to-classroom-ext-icon:active {\n\tfilter: drop-shadow(5px 5px 3px ' + response.bcolour + ');\n}*/\n.share-doc-to-classroom-ext-text {\n\tfont-family: \'Roboto\';\n}';
+			stylez.innerText = '.share-doc-to-classroom-ext-icon {\n\tcursor: pointer;\n\tuser-drag: none; \n\tuser-select: none;\n\t-moz-user-select: none;\n\t-webkit-user-drag: none;\n\t-webkit-user-select: none;\n\t-ms-user-select: none;\n}\n.share-doc-to-classroom-ext-icon:hover {\n\tfilter: brightness(80%);\n}\n /*.share-doc-to-classroom-ext-icon:active {\n\tfilter: drop-shadow(5px 5px 3px ' + response.bcolour + ');\n}*/\n.share-doc-to-classroom-ext-text {\n\tfont-family: \'Roboto\', sans-serif;\n}';
 			divtd.appendChild(stylez);
 			
 			

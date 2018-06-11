@@ -7,11 +7,7 @@ css injected into the doc page
 	/*top: 160.5px !important;*/
 	top: 160.5px !important;
 }
-.modal-dialog-content[style*="214px"] {
-	/*height: 360px !important;*/
-	height: 262px !important;
-}
-.modal-dialog-content[style*="215px"] {
+.modal-dialog-content[style*="213px"], .modal-dialog-content[style*="214px"], .modal-dialog-content[style*="215px"], .modal-dialog-content[style*="216px"] {
 	/*height: 360px !important;*/
 	height: 262px !important;
 }

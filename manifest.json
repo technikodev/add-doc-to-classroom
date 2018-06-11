@@ -4,7 +4,7 @@
 	"name": "Share Doc to Classroom",
 	"description": "An extension to help teachers share Docs to Google Classroom",
 	
-	"version": "0.7",
+	"version": "0.8",
 	
 	"icons": {
 		"8": "icons/icon8.png",
@@ -22,9 +22,9 @@
   	
   	"background": {
 		"scripts": [
-			"hot-reload.js",
 			"chrome-promise.js",
-			"background.js"
+			"background.js",
+			"hot-reload.js"
 		]
 	},
 	
@@ -36,15 +36,9 @@
 	"content_scripts": [
 		{
 			"matches": ["https://docs.google.com/sharing/*"],
-			"js": ["inject.js"],
+			"js": ["arrive.min.js", "inject.js"],
 			"all_frames": true,
-			"run_at": "document_end"
-		},
-		{
-			"matches": ["https://docs.google.com/sharing/*"],
-			"js": ["inject.js"],
-			"all_frames": true,
-			"run_at": "document_idle"
+			"run_at": "document_start"
 		},
 		{
 			"matches": ["https://docs.google.com/document/*"],
@@ -62,6 +56,6 @@
 	],
 	
 	"web_accessible_resources": [
-    		"images/*"
+    	"images/*"
   	]
 }
