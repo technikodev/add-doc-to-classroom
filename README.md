@@ -13,3 +13,6 @@ Get it at: https://addons.mozilla.org/en-US/firefox/addon/share-doc-to-classroom
 If you have completed the above steps, when you next open a Google Doc a Share Doc To Classroom button will show up
 
 (Thanks to [The Great Suspender's README file](https://github.com/deanoemcke/thegreatsuspender/blob/master/README.md) for instructions on installing unpacked extensions)
+
+## Notice
+Google Classroom is a trademark of Google Inc. I am not affiliated in any way.
