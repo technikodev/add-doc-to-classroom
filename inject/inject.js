@@ -2,11 +2,14 @@ console.log('Share Doc To Classroom is running');
 
 
 var ok = false;
+var debugdata = '';
 
 function doit() {
 	var url = (window.location != window.parent.location) ? document.referrer : document.location.href;
 	if (url.match('https:\/\/docs.google.com/document')){
-		addsharebutton();
+		addsharebutton('Doc');
+	} else if (url.match('https:\/\/docs.google.com/presentation')){
+		addsharebutton('Presentation');
 	}
 }
 
@@ -54,7 +57,7 @@ document.arrive('.simple-sharing-vertical-spacer', function() {
 
 
 
-function addsharebutton() {	
+function addsharebutton(TYPE) {	
 	//console.log(Date.now());
 	if (document.getElementsByClassName('simple-sharing-vertical-spacer')[0]) {
 		var spacer = document.getElementsByClassName('simple-sharing-vertical-spacer')[0];
@@ -79,6 +82,10 @@ function addsharebutton() {
   		//console.log(response);
   		//console.log(response.type);
 		var type = response.type;
+		
+		var url = (window.location != window.parent.location) ? document.referrer : document.location.href;
+		var openurl = 'https://classroom.google.com/share?url=' + encodeURIComponent(url);
+		
 		if (type == 'icon') {
 			
 			var divtd = document.createElement('td');
@@ -87,9 +94,6 @@ function addsharebutton() {
 			img.width = 48;
 			img.height = 48;
 			img.classList.add('share-doc-to-classroom-ext-icon');
-			
-			var url = (window.location != window.parent.location) ? document.referrer : document.location.href;
-			var openurl = 'https://classroom.google.com/share?url=' + encodeURIComponent(url);
 			
 			switch (response.icolour) {
 				case 'light':
@@ -106,19 +110,17 @@ function addsharebutton() {
 				openit(openurl);
 			}, false);
 			
-			//img.style = 'cursor:pointer';
-			
 			divtd.appendChild(img);
 			
-			var stylez = document.createElement('style');
-			stylez.innerText = '.share-doc-to-classroom-ext-icon {\n\tcursor: pointer;\n\tuser-drag: none; \n\tuser-select: none;\n\t-moz-user-select: none;\n\t-webkit-user-drag: none;\n\t-webkit-user-select: none;\n\t-ms-user-select: none;\n}\n.share-doc-to-classroom-ext-icon:hover {\n\tfilter: brightness(80%);\n}\n /*.share-doc-to-classroom-ext-icon:active {\n\tfilter: drop-shadow(5px 5px 3px ' + response.bcolour + ');\n}*/\n.share-doc-to-classroom-ext-text {\n\tfont-family: \'Roboto\', sans-serif;\n}';
-			divtd.appendChild(stylez);
+			//var stylez = document.createElement('style');
+			//stylez.innerText = '.share-doc-to-classroom-ext-icon {\n\tcursor: pointer;\n\tuser-drag: none; \n\tuser-select: none;\n\t-moz-user-select: none;\n\t-webkit-user-drag: none;\n\t-webkit-user-select: none;\n\t-ms-user-select: none;\n}\n.share-doc-to-classroom-ext-icon:hover {\n\tfilter: brightness(80%);\n}\n /*.share-doc-to-classroom-ext-icon:active {\n\tfilter: drop-shadow(5px 5px 3px ' + response.bcolour + ');\n}*/\n.share-doc-to-classroom-ext-text {\n\tfont-family: \'Roboto\', sans-serif;\n}';
+			//divtd.appendChild(stylez);
 			
 			
 			var texttd = document.createElement('td');;
 			var text = document.createElement('p');
 			text.classList.add('share-doc-to-classroom-ext-text');
-			text.innerText = 'Share Doc to Classroom';
+			text.innerText = 'Share ' +  TYPE + ' to Classroom';
 			
 			texttd.appendChild(text);
 			tableyr.appendChild(divtd);
@@ -126,14 +128,13 @@ function addsharebutton() {
 		} else {
 			var texttd = document.createElement('td');
 			var stylez = document.createElement('style');
-			stylez.innerText = '.share-doc-to-classroom-ext-label {\n\tbox-shadow: none;\n\tbackground-color: ' + response.bcolour +';\n\tcursor: pointer;\n\tborder-color: transparent;\n\tborder-radius: 2px;\n\tborder-width: 1px;\n\tborder-style: inset;\n\tcolor: rgb(0,0,0);\n\tfont-size: 13px;\n\theight: 30px;\n\tpadding: 0 14px;\n\tmargin-right: 8px;\n\t\n\tdisplay: inline-flex;\n\talign-items: center;\n\tjustify-content: center;\n\t\n\ttext-align: center;\n}\n\n.share-doc-to-classroom-ext-label:hover {\n\tbox-shadow: 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 3px 1px -2px rgba(0,0,0,0.12), 0px 1px 5px 0px rgba(0,0,0,0.2);\n\t\n}';
+			stylez.innerText = '.share-doc-to-classroom-ext-label {\n\tbackground-color:' + response.bcolour + ';\n}';
+			//stylez.innerText = '.share-doc-to-classroom-ext-label {\n\tbox-shadow: none;\n\tbackground-color: ' + response.bcolour +';\n\tcursor: pointer;\n\tborder-color: transparent;\n\tborder-radius: 2px;\n\tborder-width: 1px;\n\tborder-style: inset;\n\tcolor: rgb(0,0,0);\n\tfont-size: 13px;\n\theight: 30px;\n\tpadding: 0 14px;\n\tmargin-right: 8px;\n\t\n\tdisplay: inline-flex;\n\talign-items: center;\n\tjustify-content: center;\n\t\n\ttext-align: center;\n}\n\n.share-doc-to-classroom-ext-label:hover {\n\tbox-shadow: 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 3px 1px -2px rgba(0,0,0,0.12), 0px 1px 5px 0px rgba(0,0,0,0.2);\n\t\n}';
 			texttd.appendChild(stylez);
 	
 			var text = document.createElement('label');
 			text.classList.add('share-doc-to-classroom-ext-label');
 			
-			var url = (window.location != window.parent.location) ? document.referrer : document.location.href;
-			var openurl = 'https://classroom.google.com/share?url=' + encodeURIComponent(url);
 			text.addEventListener('click', function(e) {
 				//window.open(openurl, 'addToClassroomWindow', 'width=500,height=500');
 				openit(openurl);
@@ -141,11 +142,14 @@ function addsharebutton() {
 	
 			//var text = document.createElement('p');
 	
-			text.innerText = 'Share Doc to Classroom';
+			text.innerText = 'Share ' +  TYPE + ' to Classroom';
 			texttd.appendChild(text);
 
 			tableyr.appendChild(texttd);
 		}
+		var brtd = document.createElement('td');
+		brtd.innerHTML = '<p>&nbsp;</p>'
+		tableyr.appendChild(brtd);
 	});
 	
 	/* var url = (window.location != window.parent.location) ? document.referrer : document.location.href; means: 

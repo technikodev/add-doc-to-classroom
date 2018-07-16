@@ -1,8 +1,12 @@
 <!doctype html>
 <html>
 	<head>
-		<script src="chrome-promise.js"></script>
+		<script src="../lib/chrome-promise.js"></script>
 		<style>
+			body {
+				min-width: 400px;
+				font-family: system-ui, sans-serif;
+			}
 			.demo {
 				display: flex;
 				/*align-content: flex-start;*/
@@ -16,6 +20,7 @@
 				margin: auto;
 			}
 		</style>
+		<link rel="stylesheet" href="../inject/inject.css">
 	</head>
 	<body>
 		<form>
@@ -45,7 +50,13 @@
 						<br>
 						<fieldset class="demo">
 							<legend>Demo</legend>
-							<img class="child" id="iconimage" width="48" height="48">
+							<table>
+								<tr>
+									<td><img class="child share-doc-to-classroom-ext-icon" id="iconimage" width="48" height="48"></td>
+									<td><label class="share-doc-to-classroom-ext-text">Share Doc to Classroom</label></td>
+								</tr>
+							</table>
+							
 						</fieldset>
 					</section>
 					
@@ -53,38 +64,12 @@
 						<label for="buttoncolour" id="buttonlabel">Choose Button Colour</label>
 						<input type="color" id="buttoncolour" name="bcolour">
 						<p><em><a id="buttonreset" style="color: black; cursor: pointer; text-decoration: underline;">Default grey</a></em></p>
-						<style>
-							#share-doc-to-classroom-ext-label {
-								box-shadow: none;
-								/*background-color: rgb(227, 226, 226);*/
-								cursor: pointer;
-								border-color: transparent;
-								border-radius: 2px;
-								border-width: 1px;
-								border-style: inset;
-								color: rgb(0,0,0);
-								font-size: 13px;
-								height: 30px;
-								padding: 0 14px;
-								/*margin-right: 8px;*/
-	
-								display: inline-flex;
-								align-items: center;
-								justify-content: center;
-	
-								text-align: center;
-							}
-
-							#share-doc-to-classroom-ext-label:hover {
-								box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 3px 1px -2px rgba(0,0,0,0.12), 0px 1px 5px 0px rgba(0,0,0,0.2);
-	
-							}
-						</style>
+						
 						<!--<br>-->
 						
 						<fieldset class="demo">
 							<legend>Demo</legend>
-							<div><label id="share-doc-to-classroom-ext-label" class="child">Share Doc to Classroom</label></div>
+							<div><label class="share-doc-to-classroom-ext-label" id="share-doc-to-classroom-ext-label">Share Doc To Classroom</label></div>
 						</fieldset>
 						
 					</section>

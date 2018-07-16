@@ -8,7 +8,6 @@ var form = document.querySelector("form");
 
 chromep.storage.local.get(['type', 'icolour', 'bcolour']).then(function (item) {
 	console.log(item);
-	
 	switch (item.type) {
 		case 'icon':
 			document.querySelector('#icon').checked = true;
@@ -53,11 +52,13 @@ form.addEventListener('submit', function(event) {
     	//chromep.storage.local.set({a: b});
   	}
   	console.log(dict);
-  	chromep.storage.local.set(dict);
-  	document.querySelector('#status').innerText = 'Saved Settings';
-  	setTimeout(function() {
-  		document.querySelector('#status').innerText = '';
-  	}, 1000);
+  	chromep.storage.local.set(dict)
+  	.then(function(something){
+  		document.querySelector('#status').innerText = 'Saved Settings';
+		setTimeout(function() {
+			document.querySelector('#status').innerText = '';
+		}, 1000);
+  	});
 }, false);
 
 form.addEventListener('change', function (e) {

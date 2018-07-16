@@ -1,0 +1,84 @@
+/*put all those inline styles into here and see if they work*/
+/*only put the color of the button as an inline style*/
+
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  /*src: local('Roboto Bold'), local('Roboto-Bold'), url(https://fonts.gstatic.com/s/roboto/v18/KFOlCnqEu92Fr1MmWUlfBBc4AMP6lQ.woff2) format('woff2');*/
+  src: url('chrome-extension://__MSG_@@extension_id__/lib/roboto.ttf');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+.share-doc-to-classroom-ext-icon {
+    cursor: pointer;
+    user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+.share-doc-to-classroom-ext-icon:hover {
+    filter: brightness(80%);
+}
+/*.share-doc-to-classroom-ext-icon:active {
+	filter: drop-shadow(5px 5px 3px ' + response.bcolour + ');
+}*/
+.share-doc-to-classroom-ext-icon:active {
+	/*
+	width:43.2px;
+	height:43.2;
+	margin:2.2px;
+	*/
+}
+
+.share-doc-to-classroom-ext-text {
+    font-family: 'Roboto', sans-serif;
+}
+
+.share-doc-to-classroom-ext-label {
+    box-shadow: none;
+    /*background-color: response.bcolour + ';'*/
+    font-family: sans-serif;
+    cursor: pointer;
+    border-color: transparent;
+    border-radius: 2px;
+    border-width: 1px;
+    border-style: inset;
+    color: rgb(0,0,0);
+    font-size: 13px;
+    height: 30px;
+    padding: 0 14px;
+    margin-right: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+}
+
+.share-doc-to-classroom-ext-label:hover {
+    /*transform: translateY(-2px);*/
+	/*box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);*/
+}
+
+.share-doc-to-classroom-ext-label:active {
+	transform: translateY(0);
+	box-shadow: none;
+}
+
+.share-doc-to-classroom-ext-ermsg {
+	font-size: 0.7em;
+	font-style: italic;
+	color: black;
+}
+.share-doc-to-classroom-ext-ermsg:visited {
+	color: black;
+}
