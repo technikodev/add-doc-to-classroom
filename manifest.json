@@ -1,10 +1,10 @@
 {
 	"manifest_version": 2,
 	
-	"name": "Share Doc to Classroom",
+	"name": "Add Doc to Classroom™",
 	"description": "An extension to help teachers share Docs to Google Classroom",
 	
-	"version": "1.0",
+	"version": "1.1",
 	
 	"icons": {
 		"8": "icons/icon8.png",
@@ -12,11 +12,11 @@
 		"28": "icons/icon28.png",
 		"32": "icons/icon32.png",
 		"48": "icons/icon48.png",
-		"64": "icons/icon64.png"
+		"64": "icons/icon64.png",
+		"128": "icons/icon128.png"
 	},
 	
 	"browser_action": {
-    	"default_title": "Open the options page for Share Doc to Classroom",
     	"default_icon": "icons/icon32.png",
     	"default_popup": "popup/popup.html"
   	},

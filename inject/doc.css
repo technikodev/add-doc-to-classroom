@@ -9,7 +9,7 @@ css injected into the doc page
 }
 .modal-dialog-content[style*="213px"], .modal-dialog-content[style*="214px"], .modal-dialog-content[style*="215px"], .modal-dialog-content[style*="216px"] {
 	/*height: 360px !important;*/
-	height: 262px !important;
+	height: 270px !important;
 }
 
 /* link */

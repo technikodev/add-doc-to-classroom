@@ -1,4 +1,4 @@
-console.log('Share Doc To Classroom is running');
+console.log('Add Doc To Classroom is running');
 
 
 var ok = false;
@@ -120,7 +120,7 @@ function addsharebutton(TYPE) {
 			var texttd = document.createElement('td');;
 			var text = document.createElement('p');
 			text.classList.add('share-doc-to-classroom-ext-text');
-			text.innerText = 'Share ' +  TYPE + ' to Classroom';
+			text.innerText = 'Add ' +  TYPE + ' to Classroom';
 			
 			texttd.appendChild(text);
 			tableyr.appendChild(divtd);
@@ -142,7 +142,7 @@ function addsharebutton(TYPE) {
 	
 			//var text = document.createElement('p');
 	
-			text.innerText = 'Share ' +  TYPE + ' to Classroom';
+			text.innerText = 'Add ' +  TYPE + ' to Classroom';
 			texttd.appendChild(text);
 
 			tableyr.appendChild(texttd);
