@@ -1,0 +1,323 @@
+<html lang="en">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+	@font-features-values Libre Franklin {
+		font-display: block;
+	}
+</style>
+<link href="https://fonts.googleapis.com/css?family=Libre+Franklin" rel="stylesheet">
+
+<style>
+	:root {
+		--greentext: #1dc186;
+		font-size: 18px;
+	}
+	
+	/* normal */
+	body {
+		font-family: 'Libre Franklin', sans-serif;
+		/* padding: 1rem; */
+		margin: 0;
+	}
+	
+	.oncolour {
+		background: linear-gradient(45deg, rgb(0, 154, 195), rgb(12, 210, 139), rgb(142, 243, 152));
+	}
+	
+	.flex {
+		display: flex;
+		flex-wrap: wrap;
+	}
+	
+	.white {
+		color: white;
+	}
+	
+	/*.block {
+		display: block;
+	}*/
+	.fullwidth {
+		width: 100%;
+	}
+	
+	.totheright {
+		margin-left: auto;
+	}
+	
+	.pad {
+		padding: 1rem;
+	}
+	
+	.button {
+		margin: .5rem auto;
+		text-transform: uppercase;
+		color: var(--greentext);
+		background-color: white;
+		border-radius: 6px;
+		letter-spacing: 0.03rem;
+		outline: 2px solid hsla(0,0%,100%,0);
+		box-shadow: 0 0 12px rgba(0,0,0,0.2);
+		padding: 0.75rem 3rem;
+		transition: all 1s;
+	}
+	
+	.btnalt {
+		background-color: var(--greentext);
+		color: white;
+	}
+	a.button.btnalt:hover {
+		background-color: var(--greentext);
+		color: white;
+		opacity: 0.6;
+	}
+	
+	.center {
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+	}
+	
+	a {
+		text-decoration: none;
+	}
+	
+	h1 {
+		font-size: 2rem;
+	}
+	
+	/* hero */
+	.hero {
+		display: grid;
+		grid-template-columns: repeat(1, 1fr);
+		/* grid-gap: 5px; */
+		/* 		width: 110vw; */
+		transition: all 2.7s ease-in-out;
+	}
+	header {
+/* 		grid-column: span 2 / auto; */
+		display: flex;
+		align-items: center;
+		color: white;
+	}
+	
+	.videoBox {
+		text-align: left;
+		transition: all 0.7s ease-in-out;
+	}
+	
+	.videoContainer {
+		width: 100%;
+		position: relative;
+		padding-bottom: 56.25%;
+		/*height: 0;*/
+		overflow: hidden;
+	}
+	.videoIframe {
+		position: absolute;
+		border: 0;
+		width: 100%;
+		height: 100%;
+	}
+	
+	.bottomspacing {
+		margin-bottom: 1rem;
+	}
+	.pushabitleft {
+		margin-right: 1rem;
+	}
+	.pushabitright {
+		margin-left: 1rem;
+	}
+	
+	.hoverdim {
+		transition: opacity .25s;
+	}
+	.hoverdim:hover {
+		opacity: 0.6;
+	}
+	.button.hoverdim:hover {
+		opacity: 1;
+		background-color: #eee;
+	}
+	
+	/* about */
+	.about {
+		width: 90%;
+		margin: auto;
+	}
+	
+	/* image? */
+	.image {
+		transition: all .5s;
+		width: 90%;
+		height: auto;
+	}
+	
+	.imgbox {
+	}
+	
+	/* faq */
+	.half {
+/* 		flex: 0 0 50%; */
+		flex: 0 0 48%;
+		margin-right: 2%;
+	}
+	
+	.faq {
+		display: block;
+		min-height: 10rem;
+		align-items: center;
+	}
+	
+	.question {
+		color: var(--greentext);
+		font-size: 1.1rem;
+	}
+	
+	/* cta */
+	.cta {
+		background-color: #eee;
+	}
+	
+	/* footer */
+	footer {
+	}
+	
+	@media screen and (min-width: 900px) {
+		.faq {
+			display: flex;
+		}
+		.image {
+			width: 75%;
+		}
+	}
+	
+	@media screen and (min-width: 945px) {
+		/* hero */
+		.videoContainer {
+			transform-style: preserve-3d;
+/* 			transform: scale(1.3) translateX(-50px) translateY(-15px) translateZ(-1000px) perspective(3190px) rotateY(-29deg) rotateX(4deg) rotate(1deg); */
+/* 			transform: scale(1.3) translateX(0) translateY(0) translateZ(-1000px) perspective(3190px) rotateY(-29deg) rotateX(4deg) rotate(1deg); */
+		}
+		
+		.videoBox {
+/* 			width: 55%; */
+/* 			margin: 3rem auto 3rem auto; */
+/* 			margin-bottom: 3rem; */
+		}
+		.pushabitleft {
+/* 			margin-right: 7rem; */
+		}
+		
+		/* about */
+		
+		
+		/* image? */
+		
+		
+		/* faq */
+		
+		
+		/* cta */
+		
+		
+		/* footer */
+		
+		
+	}
+	
+	@media screen and (min-width: 1200px) {
+		.videoBox  {
+			width: 65%;/*65*/
+		}
+		.image {
+			width: 60%;
+		}
+	}
+</style>
+<body>
+<section class="hero oncolour pad">
+	<header>
+		<section class="pushabitright">
+			<h4>Add Doc to Classroom</h4>
+		</section>
+		<section class="totheright pushabitleft">
+			<a class="white hoverdim" href="mailto:hello@techniko.ml?subject=Add%20Doc%20to%20Classroom">Contact</a>
+		</section>
+	</header>
+	<section class="flex center">
+		<section>
+			<h1>Add Doc to Classroom</h1>
+			<p>A simple button to share the Doc to Google Classroom</p>
+			<section class="flex center">
+				<a class="button hoverdim" href="https://chrome.google.com/webstore/detail/add-doc-to-classroom/omnmfbjgmackkcedkabbpdpcijahechl">Chrome</a>
+				<a class="button hoverdim" href="https://addons.mozilla.org/en-US/firefox/addon/add-doc-to-classroom/">Firefox</a>
+			</section>
+		</section>
+		<section class="block fullwidth videoBox totheright">
+			<section class="videoContainer">
+				<video class="videoIframe" autoplay loop muted playsinline poster="https://cdn.rawgit.com/technikodev/share-doc-to-classroom/788364fe/media/screenshots/bothinwindow.png">
+					<source type="video/webm" src="https://cdn.rawgit.com/technikodev/share-doc-to-classroom/ada54421/media/videos/howto-g.webm"></source>
+					<source type="video/mp4" src="https://cdn.rawgit.com/technikodev/share-doc-to-classroom/ada54421/media/videos/howto-g.mp4"></source>
+				</video>
+			</section>
+		</section>
+	</section>
+</section>
+
+<section class="onwhite center about pad">
+	<section>
+		<p>How much time do you spend sharing a Doc to your class? You have to open Google Classroom, find the class, add a new post, look through Drive…</p>
+		<p>But as a teacher you don’t have time for that right?</p>
+		<p>With Add Doc to Classroom you can share the Doc or Slides presentation by clicking a button right from the Doc, no need for opening a new tab.</p>
+		<p>Google Classroom will open in a popup with the Doc/Slides pre-filled in the post, all you do is choose the class and click Post.</p>
+	</section>
+</section>
+
+<section class="oncolour center pad">
+	<section>
+		<h2>Google Classroom is opened with the Doc URL pre-filled</h2>
+	</section>
+	<section>
+		<img class="justaboutfull image bottomspacing" src="https://cdn.rawgit.com/technikodev/share-doc-to-classroom/788364fe/media/screenshots/bothinwindow.png" alt="Screenshot of the Google Docs share screen with the Add Doc to Classroom button inside it, and a popup window opening Google Classroom">
+	</section>
+</section>
+
+<section class="onwhite">
+	<section class="flex faq pad">
+		<section class="half">
+			<section class="question">
+				<strong>Do you see my files?</strong>
+			</section>
+			<section class="answer">
+				<p>No. It works just like the Classroom Share Button that websites can add to their page, only it gets the Doc/Slides URL. It all happens on your computer</p>
+			</section>
+		</section>
+		<section class="half">
+			<section class="question">
+				<strong>Is this only for Google Docs?</strong>
+			</section>
+			<section class="answer">
+				<p>The button will show up for Docs and for Slides Presentations. You can also click the extension icon in the toolbar to add a normal webpage to Google Docs too.</p>
+			</section>
+		</section>
+	</section>
+</section>
+
+<section class="cta center pad">
+	<section>
+		<h2>Use that time to teach</h2>
+	</section>
+	<section class="flex center">
+		<a class="button btnalt hoverdim" href="https://chrome.google.com/webstore/detail/add-doc-to-classroom/omnmfbjgmackkcedkabbpdpcijahechl">Chrome</a>
+		<a class="button btnalt hoverdim" href="https://addons.mozilla.org/en-US/firefox/addon/add-doc-to-classroom/">Firefox</a>
+	</section>
+</section>
+
+<footer>
+	<section class="footer pad">
+		© 2018 Techniko
+	</section>
+</footer>
+</body>
+</html>
