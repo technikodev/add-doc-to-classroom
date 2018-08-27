@@ -436,7 +436,7 @@ xhr.onload = function(e) {
 	function updateaftersuccess(name, url){
 		var els = document.getElementsByClassName(name);
 		for (var i = 0; i < els.length; i++) {
-			els[i].src = url
+			els[i].href = url
 		}
 	}
 	updateaftersuccess('chromebtn', 'https://api.mixpanel.com/track/?data=ewoJImV2ZW50IjogIkNocm9tZSBleHQgdmlzaXQiLAoJInByb3BlcnRpZXMiOiB7CgkJInRva2VuIjogImI5M2RhMTRjNDQwZTEwNzg5YjZhNzNkMWEwMzIzZmYzIgoJfQp9&redirect=https%3A%2F%2Fchrome.google.com%2Fwebstore%2Fdetail%2Fadd-doc-to-classroom%2Fomnmfbjgmackkcedkabbpdpcijahechl');
