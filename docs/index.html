@@ -259,6 +259,7 @@
 				<video class="videoIframe" autoplay loop muted playsinline poster="/add-doc-to-classroom/media/screenshots/bothinwindow.png">
 					<source type="video/webm" src="/add-doc-to-classroom/media/videos/howto-g.webm"></source>
 					<source type="video/mp4" src="/add-doc-to-classroom/media/videos/howto-g.mp4"></source>
+					<p>A looped video that shows the Add Doc to Classroom button being clicked and the Google Classroom window opened as a popup</p>
 				</video>
 			</section>
 		</section>
@@ -294,7 +295,7 @@
 				<strong>Do you see my files?</strong>
 			</section>
 			<section class="answer">
-				<p>No. It works just like the Classroom Share Button that websites can add to their page, only it gets the Doc/Slides URL. It all happens on your computer</p>
+				<p>No. It works just like the Classroom Share Button that websites can add to their page, only it gets the Doc/Slides URL. All processing happens on your computer.</p>
 			</section>
 		</section>
 		<section class="half">
@@ -431,21 +432,21 @@
 </script>
 <script>
 	var xhr = new XMLHttpRequest();
-xhr.open('GET', 'https://new-tab-cors-server.herokuapp.com/https://api.mixpanel.com/track/?data=ewoJImV2ZW50IjogIkxhbmRpbmcgcGFnZSB2aXNpdCIsCgkicHJvcGVydGllcyI6IHsKCQkidG9rZW4iOiAiYjkzZGExNGM0NDBlMTA3ODliNmE3M2QxYTAzMjNmZjMiCgl9Cn0=&img=1', true);
-xhr.onload = function(e) {
-	function updateaftersuccess(name, url){
-		var els = document.getElementsByClassName(name);
-		for (var i = 0; i < els.length; i++) {
-			els[i].href = url
+	xhr.open('GET', 'https://new-tab-cors-server.herokuapp.com/https://api.mixpanel.com/track/?data=ewoJImV2ZW50IjogIkxhbmRpbmcgcGFnZSB2aXNpdCIsCgkicHJvcGVydGllcyI6IHsKCQkidG9rZW4iOiAiYjkzZGExNGM0NDBlMTA3ODliNmE3M2QxYTAzMjNmZjMiCgl9Cn0=&img=1', true);
+	xhr.onload = function(e) {
+		function updateaftersuccess(name, url){
+			var els = document.getElementsByClassName(name);
+			for (var i = 0; i < els.length; i++) {
+				els[i].href = url
+			}
 		}
+		updateaftersuccess('chromebtn', 'https://api.mixpanel.com/track/?data=ewoJImV2ZW50IjogIkNocm9tZSBleHQgdmlzaXQiLAoJInByb3BlcnRpZXMiOiB7CgkJInRva2VuIjogImI5M2RhMTRjNDQwZTEwNzg5YjZhNzNkMWEwMzIzZmYzIgoJfQp9&redirect=https%3A%2F%2Fchrome.google.com%2Fwebstore%2Fdetail%2Fadd-doc-to-classroom%2Fomnmfbjgmackkcedkabbpdpcijahechl');
+		updateaftersuccess('firefoxbtn', 'https://api.mixpanel.com/track/?data=ewoJImV2ZW50IjogIkZpcmVmb3ggZXh0IHZpc2l0IiwKCSJwcm9wZXJ0aWVzIjogewoJCSJ0b2tlbiI6ICJiOTNkYTE0YzQ0MGUxMDc4OWI2YTczZDFhMDMyM2ZmMyIKCX0KfQ==&redirect=https%3A%2F%2Faddons.mozilla.org%2Fen-US%2Ffirefox%2Faddon%2Fadd-doc-to-classroom');
+	};
+	xhr.onerror = function(e) {
+		//console.warn(e);
 	}
-	updateaftersuccess('chromebtn', 'https://api.mixpanel.com/track/?data=ewoJImV2ZW50IjogIkNocm9tZSBleHQgdmlzaXQiLAoJInByb3BlcnRpZXMiOiB7CgkJInRva2VuIjogImI5M2RhMTRjNDQwZTEwNzg5YjZhNzNkMWEwMzIzZmYzIgoJfQp9&redirect=https%3A%2F%2Fchrome.google.com%2Fwebstore%2Fdetail%2Fadd-doc-to-classroom%2Fomnmfbjgmackkcedkabbpdpcijahechl');
-	updateaftersuccess('firefoxbtn', 'https://api.mixpanel.com/track/?data=ewoJImV2ZW50IjogIkZpcmVmb3ggZXh0IHZpc2l0IiwKCSJwcm9wZXJ0aWVzIjogewoJCSJ0b2tlbiI6ICJiOTNkYTE0YzQ0MGUxMDc4OWI2YTczZDFhMDMyM2ZmMyIKCX0KfQ==&redirect=https%3A%2F%2Faddons.mozilla.org%2Fen-US%2Ffirefox%2Faddon%2Fadd-doc-to-classroom');
-};
-xhr.onerror = function(e) {
-	//console.warn(e);
-}
-xhr.send()
+	xhr.send()
 </script>
 </body>
 </html>
