@@ -54,6 +54,18 @@ chrome.runtime.onMessage.addListener(
 					sendResponse({type: typeSend, icolour: icolourSend, bcolour: bcolourSend});
 				});
 				break;
+			case 'onPage':
+				console.log(sender);
+				var tabid = sender.tab.id;
+				chromep.browserAction.setBadgeBackgroundColor({color: '#00a45c'})
+				.then(function(){
+					return chromep.browserAction.setBadgeText({text: '◉', tabId: tabid})
+				}).then(function(){
+					sendResponse('Badge set on tab ' + tabid);
+				}).catch(function(error){
+					console.log(error);
+				})
+				break;
 		}
 		return true;
 	}

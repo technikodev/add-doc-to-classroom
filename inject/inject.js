@@ -1,5 +1,6 @@
-console.log('Add Doc To Classroom is running');
-
+console.log(chrome.i18n.getMessage('ext_name') + ' share js is running');
+//Presentaciones de Google
+// Documentos de Google
 
 var ok = false;
 var debugdata = '';
@@ -48,11 +49,13 @@ function actThenThrottleEvents(listener, delay) {
 
 document.arrive('.simple-sharing-people-heading', function() {
 	setup();
-	//actThenThrottleEvents(setup, 250);
 });
 document.arrive('.simple-sharing-vertical-spacer', function() {
 	setup();
-	//actThenThrottleEvents(setup, 250);
+});
+
+chrome.runtime.sendMessage({greeting: 'onPage'}, function(response) {
+	console.log(response.farewell);
 });
 
 
@@ -120,8 +123,17 @@ function addsharebutton(TYPE) {
 			var texttd = document.createElement('td');;
 			var text = document.createElement('p');
 			text.classList.add('share-doc-to-classroom-ext-text');
-			text.innerText = 'Add ' +  TYPE + ' to Classroom';
-			
+			switch (TYPE) {
+				//text.innerText = 'Add ' +  TYPE + ' to Classroom';
+				case 'Doc':
+					text.innerText = chrome.i18n.getMessage('ext_name')
+					break;
+				case 'Presentation':
+					text.innerText = chrome.i18n.getMessage('add_presentation')
+					break;
+				default:
+					text.innerText = chrome.i18n.getMessage('ext_name')
+			}
 			texttd.appendChild(text);
 			tableyr.appendChild(divtd);
 			tableyr.appendChild(texttd);
@@ -142,7 +154,17 @@ function addsharebutton(TYPE) {
 	
 			//var text = document.createElement('p');
 	
-			text.innerText = 'Add ' +  TYPE + ' to Classroom';
+			switch (TYPE) {
+				//text.innerText = 'Add ' +  TYPE + ' to Classroom';
+				case 'Doc':
+					text.innerText = chrome.i18n.getMessage('ext_name')
+					break;
+				case 'Presentation':
+					text.innerText = chrome.i18n.getMessage('add_presentation')
+					break;
+				default:
+					text.innerText = chrome.i18n.getMessage('ext_name')
+			}
 			texttd.appendChild(text);
 
 			tableyr.appendChild(texttd);

@@ -10,3 +10,15 @@ document.querySelector('#share').addEventListener('click', function(e) {
 		window.close();
 	});
 }, false);
+
+for (var el of document.querySelectorAll('[data-i18n]')) {
+	el.innerText = chrome.i18n.getMessage(el.dataset.i18n)
+	console.log(chrome.i18n.getMessage(el.dataset.i18n))
+}
+
+/*chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
+	chrome.tabs.sendMessage(tabs[0].id, {greeting: 'debug'}, function(response) {
+		console.log(response);
+		//<a class="label" id="problem" href="" target="_blank">Report problem</a>
+	});
+});*/

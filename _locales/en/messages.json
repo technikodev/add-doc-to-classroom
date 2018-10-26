@@ -1,0 +1,37 @@
+{
+	"ext_name": {
+		"message": "Add Doc to Classroom",
+		"description": "Extension name"
+	},
+	"ext_desc": {
+		"message": "An extension to help teachers share Docs to Google Classroom",
+		"description": "Extension description"
+	},
+	
+	"docs": {
+		"message": "Docs",
+		"description": "The short name for Google Docs"
+	},
+	"slides": {
+		"message": "Slides",
+		"description": "The short name for Google Slides"
+	},
+	
+	"add_presentation": {
+		"message": "Add Presentation to Classroom",
+		"description": "The phrase for adding a Presentation to Classrom"
+	},
+	
+	"options": {
+		"message": "Options",
+		"description": "The word for the settings page"
+	},
+	"add_page": {
+		"message": "Add Page",
+		"description": "The phrase for adding a web page"
+	},
+	"send_feedback": {
+		"message": "Send Feedback",
+		"description": "The phrase for sending feedback to the developer"
+	}
+}

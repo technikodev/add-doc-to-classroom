@@ -1,10 +1,11 @@
 {
 	"manifest_version": 2,
 	
-	"name": "Add Doc to Classroom™",
-	"description": "An extension to help teachers share Docs to Google Classroom",
 	
-	"version": "1.1",
+	"name": "__MSG_ext_name__",
+	"description": "__MSG_ext_desc__",
+	
+	"version": "1.2",
 	
 	"icons": {
 		"8": "icons/icon8.png",
@@ -38,8 +39,8 @@
 	"content_scripts": [
 		{
 			"matches": ["https://docs.google.com/sharing/*"],
-			"js": ["lib/arrive.min.js", "inject/inject.js"],
 			"css": ["inject/inject.css"],
+			"js": ["lib/arrive.min.js", "inject/inject.js"],
 			"all_frames": true,
 			"run_at": "document_start"
 		},
@@ -75,5 +76,6 @@
 	"web_accessible_resources": [
     	"images/*",
     	"lib/roboto.ttf"
-  	]
+  	],
+  	"default_locale": "en"
 }
